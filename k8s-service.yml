@@ -1,4 +1,4 @@
-appVersion: v1
+appVersion: apps/v1
 kind: Service
 
 metadata:
