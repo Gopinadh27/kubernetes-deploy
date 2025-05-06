@@ -19,6 +19,11 @@ spec:
                 port:
                   number: 80
 
+# install ingress controller for above ingress resource to affect
+#kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
+#kubectl get pods --namespace ingress-nginx
+
+
 #    - host: "*.foo.com"
 #      http:
 #        paths:
