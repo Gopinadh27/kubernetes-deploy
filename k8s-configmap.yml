@@ -19,6 +19,6 @@ metadata:
   name: spring-boot-crud-cm
 
 data:
-  db-url: jdbc:mysql://mysql-service:3306/user-service
+  db-url: jdbc:mysql://mysql:3306/user-service
   db-driver: com.mysql.cj.jdbc.Driver
 
