@@ -12,10 +12,10 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/bar"
+            path: "/"
             backend:
               service:
-                name: k8s-service
+                name: k8s-spring-boot-crud-svc
                 port:
                   number: 80
 

@@ -2,25 +2,41 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: k8s-deployment
+  name: spring-boot-crud-dep
   labels:
-    app: k8s-test
+    app: spring-boot-crud-app
 
 spec:
   replicas: 2
 
   selector:
     matchLabels:
-      app: k8s-test
+      app: spring-boot-crud-dep
 
   template:
     metadata:
       labels:
-        app: k8s-test
+        app: spring-boot-crud-app
 
     spec:
       containers:
-        - name: k8s-deployment-app
+        - name: spring-boot-crud-app
           image: ctli/kubernetes-deploy:v1
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+
+            - name: secret-volume
+              mountPath: /secrets
+
           ports:
             - containerPort: 8080
+
+      volumes:
+        - name: config-volume
+          configMap:
+            name: spring-boot-crud-cm
+
+        - name: secret-volume
+          secret:
+            secretName: spring-boot-crud-secrets
