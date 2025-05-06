@@ -15,17 +15,17 @@ spec:
             path: "/bar"
             backend:
               service:
-                name: service1
+                name: k8s-service
                 port:
                   number: 80
 
-    - host: "*.foo.com"
-      http:
-        paths:
-          - pathType: Prefix
-            path: "/foo"
-            backend:
-              service:
-                name: service2
-                port:
-                  number: 80
+#    - host: "*.foo.com"
+#      http:
+#        paths:
+#          - pathType: Prefix
+#            path: "/foo"
+#            backend:
+#              service:
+#                name: k8s-service
+#                port:
+#                  number: 80
