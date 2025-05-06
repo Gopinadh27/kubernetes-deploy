@@ -22,21 +22,46 @@ spec:
       containers:
         - name: spring-boot-crud-app
           image: ctli/kubernetes-deploy:v1
-          volumeMounts:
-            - name: config-volume
-              mountPath: /config
+      env:
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: spring-boot-crud-cm
+              key: db-url
 
-            - name: secret-volume
-              mountPath: /secrets
+        - name: DB_DRIVER
+          valueFrom:
+            configMapKeyRef:
+              name: spring-boot-crud-cm
+              key: db-driver
+
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: spring-boot-crud-secrets
+              key: db-username
+
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: spring-boot-crud-secrets
+              key: db-password
+
+#          volumeMounts:
+#            - name: config-volume
+#              mountPath: /config
+#
+#            - name: secret-volume
+#              mountPath: /secrets
 
           ports:
             - containerPort: 8080
 
-      volumes:
-        - name: config-volume
-          configMap:
-            name: spring-boot-crud-cm
-
-        - name: secret-volume
-          secret:
-            secretName: spring-boot-crud-secrets
+#      volumes:
+#        - name: config-volume
+#          configMap:
+#            name: spring-boot-crud-cm
+#
+#        - name: secret-volume
+#          secret:
+#            secretName: spring-boot-crud-secrets
